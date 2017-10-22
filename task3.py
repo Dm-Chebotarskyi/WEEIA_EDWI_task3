@@ -78,11 +78,14 @@ for content in contents:
     add_to_dict(words)
     articles.append(words)
 
+alphabet_size = len(dictionary.keys())
+print "There are " + str(alphabet_size) + " unique words in all articles\n"
+
 for stop in get_stop_words("en"):
     dictionary.pop(stop, None)
 
 alphabet_size = len(dictionary.keys())
-print "There are " + str(alphabet_size) + " unique words in all articles"
+print "There are " + str(alphabet_size) + " unique words without stop words in all articles\n"
 
 values = []
 
@@ -105,7 +108,8 @@ for i in range(0, len(values) - 1):
 results.sort(key=lambda x: x[1])
 
 
-print "\t\t\t\tLowest\t \\/"
-for r in results:
-    print "Angle beetween %s : %f" % (r[0], r[1])
-print "\t\t\t\tBiggest\t /\\"
+for i in range(0, 10):
+    r1 = results[i]
+    r2 = results[len(results) - i - 1]
+    print "Angle beetween %s : %f" % (r1[0], r1[1])
+    print "Angle beetween %s : %f\n" % (r2[0], r2[1])
